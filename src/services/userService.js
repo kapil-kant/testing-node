@@ -18,4 +18,9 @@ const listUsers = async ({ page = 1, limit = 20 }) => {
   return { items, total, page, limit }
 }
 
-module.exports = { getUserById, listUsers }
+const getUserCount = async () => {
+  // Returns a number: total users, even if zero
+  return await User.countDocuments()
+}
+
+module.exports = { getUserById, listUsers, getUserCount }
