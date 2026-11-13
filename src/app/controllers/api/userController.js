@@ -20,4 +20,13 @@ const listUsers = async (req, res, next) => {
   }
 }
 
-module.exports = { getUser, listUsers }
+const getUserCount = async (req, res, next) => {
+  try {
+    const count = await userService.getUserCount()
+    res.json({ success: true, data: count })
+  } catch (error) {
+    next(error)
+  }
+}
+
+module.exports = { getUser, listUsers, getUserCount }
